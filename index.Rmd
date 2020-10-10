@@ -1,0 +1,138 @@
+---
+title: "Displaying your pretty R tables in GitHub"
+author: "Laura Ellis"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document
+---
+
+# Rmd file set up
+
+Ensure that you set your .Rmd `output` to be `html_document` as per below.
+```
+---
+title: "Displaying your pretty R tables in GitHub"
+author: "Laura Ellis"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document
+---
+```
+<br/>
+
+# Data set up
+
+Load the necessary libraries and set some color variables which will be used during the table display.
+
+```{r echo=TRUE}
+#Load the libraries, if you don't have the library installed, run the following command per library:
+#install.packages("dplyr")
+library(data.table)
+library(dplyr)
+library(formattable)
+library(DT) 
+
+customGreen0 = "#DeF7E9"
+customGreen = "#71CA97"
+customRed = "#ff7f7f"
+
+```
+
+<br/>
+
+## Pull in your data and format it
+
+Download the Austin indicator data set and format it for easy table display.  
+
+```{r}
+
+#Original data set from: https://data.austintexas.gov/City-Government/Imagine-Austin-Indicators/apwj-7zty/data
+
+austinData= fread('https://raw.githubusercontent.com/lgellis/MiscTutorial/master/Austin/Imagine_Austin_Indicators.csv', data.table=FALSE, header = TRUE, stringsAsFactors = FALSE)
+
+#Format the table
+i1 <- austinData %>%
+  filter(`Indicator Name` %in% 
+           c('Prevalence of Obesity', 'Prevalence of Tobacco Use', 
+             'Prevalence of Cardiovascular Disease', 'Prevalence of Diabetes')) %>%
+  select(c(`Indicator Name`, `2011`, `2012`, `2013`, `2014`, `2015`, `2016`)) %>%
+  mutate (Average = round(rowMeans(
+    cbind(`2011`, `2012`, `2013`, `2014`, `2015`, `2016`), na.rm=T),2), 
+    `Improvement` = round((`2011`-`2016`)/`2011`*100,2))
+
+
+```
+<br/>
+
+
+# Table Displays
+
+We are now going to call on a few sample libraries which produce beautiful and useful html tables.
+
+
+<br/>
+## Example 1: Beautiful table with the fortmattable package
+
+This example comes from my blog on [how to use the formattable package.](https://www.littlemissdata.com/blog/prettytables)
+```{r}
+
+#Create a formatter to display the red/green and arrow up/down indicators.
+improvement_formatter <- formatter("span", 
+                                   style = x ~ style(font.weight = "bold", 
+                                                     color = ifelse(x > 0, customGreen, ifelse(x < 0, customRed, "black"))), 
+                                   x ~ icontext(ifelse(x>0, "arrow-up", "arrow-down"), x)
+                                   )
+
+# Display the table using the formattable package and the custom formatter, "improvement_formatter" from above. 
+
+formattable(i1, align =c("l","c","c","c","c", "c", "c", "c", "r"), list(
+  `Indicator Name` = formatter("span", style = ~ style(color = "grey",font.weight = "bold")), 
+  `2011`= color_tile(customGreen, customGreen0),
+  `2012`= color_tile(customGreen, customGreen0),
+  `2013`= color_tile(customGreen, customGreen0),
+  `2014`= color_tile(customGreen, customGreen0),
+  `2015`= color_tile(customGreen, customGreen0),
+  `2016`= color_tile(customGreen, customGreen0),
+  `Average` = color_bar(customRed),
+  `Improvement` = improvement_formatter
+))
+
+```
+
+<br/>
+
+## Example 2: Pretty, interactive table with the DT package
+
+Display a beautiful and interactive with the DT package.  I love this package for very large tables, that a user may want to interact with explore in a UI for a while before analyzing.  I used this package for my very large tables in my [pelotonR package](https://lgellis.github.io/pelotonR/)
+
+```{r}
+datatable(i1, extensions = "Scroller", width = 1000, options = list(scrollY = 200, scroller = TRUE, scrollX = 200, pageLength = 1))
+```
+<br/>
+
+## More pretty R table examples
+
+You can find a great overview of packages to use for beautiful tables in R by [David Keyes](https://twitter.com/dgkeyes) [here](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/).
+
+<br/>
+
+# Export and display in GitHub
+
+## Get the HMTL file prepared
+ - Ensure that your file is called `index.Rmd`
+ - Select "Knit" in the top menu bar within R Studio. This will create your file `index.htm.` 
+ - Rename the HTML file to index.html
+ 
+## Get your GitHub repo prepared
+ 
+ - Create a new GitHub repo 
+ - Go to the `Code` area > click `Add file`.
+ - Add `index.html` and `index.Rmd` file from the above step
+ - Navigate to the repo > `Settings` > Scroll to `GitHub Pages`
+ - Select a branch.  If you are unsure, just select `Master` abd `Save`.
+ - Select a theme, I would go with `Minimal`
+ - Your URL should now be displaying. It will display text similar to: `Your site is published at {URL}`
+ - Celebrate because your beautiful data tables are now displayed in GitHub! 
+ - Optional: Change your `README.md` file to link to your html page.
+
+
