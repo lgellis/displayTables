@@ -129,9 +129,9 @@ You can find a great overview of packages to use for beautiful tables in R by [D
  - Go to the `Code` area > click `Add file`.
  - Add `index.html` and `index.Rmd` file from the above step
  - Navigate to the repo > `Settings` > Scroll to `GitHub Pages`
- - Select a branch.  If you are unsure, just select `Master` abd `Save`.
- - Select a theme, I would go with `Minimal`
- - Your URL should now be displaying. It will display text similar to: `Your site is published at {URL}`
+ - Select a branch.  If you are unsure, just select `Main` abd `Save`.
+ - Select a theme, I selected `Minimal`.  If you need to save the new README.md file for this, do please do so.  
+ - Navigate back to `Settings` > Scroll to `GitHub Pages`.  Your URL should now be displaying. It will display text similar to: `Your site is published at {URL}`
  - Celebrate because your beautiful data tables are now displayed in GitHub! 
  - Optional: Change your `README.md` file to link to your html page.
 
