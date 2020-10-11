@@ -68,9 +68,8 @@ i1 <- austinData %>%
 # Table Displays
 
 We are now going to call on a few sample libraries which produce beautiful and useful html tables.
-
-
 <br/>
+
 ## Example 1: Beautiful table with the fortmattable package
 
 This example comes from my blog on [how to use the formattable package.](https://www.littlemissdata.com/blog/prettytables)
@@ -120,16 +119,15 @@ You can find a great overview of packages to use for beautiful tables in R by [D
 
 ## Get the HMTL file prepared
  - Ensure that your file is called `index.Rmd`
- - Select "Knit" in the top menu bar within R Studio. This will create your file `index.htm.` 
- - Rename the HTML file to index.html
- 
+ - Select "Knit" in the top menu bar within R Studio. This will create your file `index.html` file 
+
 ## Get your GitHub repo prepared
  
  - Create a new GitHub repo 
  - Go to the `Code` area > click `Add file`.
  - Add `index.html` and `index.Rmd` file from the above step
  - Navigate to the repo > `Settings` > Scroll to `GitHub Pages`
- - Select a branch.  If you are unsure, just select `Main` abd `Save`.
+ - Select a branch.  If you are unsure, just select `Main` and `Save`.
  - Select a theme, I selected `Minimal`.  If you need to save the new README.md file for this, do please do so.  
  - Navigate back to `Settings` > Scroll to `GitHub Pages`.  Your URL should now be displaying. It will display text similar to: `Your site is published at {URL}`
  - Celebrate because your beautiful data tables are now displayed in GitHub! 

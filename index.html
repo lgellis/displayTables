@@ -2953,7 +2953,7 @@ summary {
 
 <h1 class="title toc-ignore">Displaying your pretty R tables in GitHub</h1>
 <h4 class="author">Laura Ellis</h4>
-<h4 class="date">10 October, 2020</h4>
+<h4 class="date">11 October, 2020</h4>
 
 </div>
 
@@ -2964,7 +2964,7 @@ summary {
 <pre><code>---
 title: &quot;Displaying your pretty R tables in GitHub&quot;
 author: &quot;Laura Ellis&quot;
-date: &quot;10 October, 2020&quot;
+date: &quot;11 October, 2020&quot;
 output:
   html_document
 ---</code></pre>
@@ -3016,8 +3016,9 @@ i1 &lt;- austinData %&gt;%
 </div>
 <div id="table-displays" class="section level1">
 <h1>Table Displays</h1>
-<p>We are now going to call on a few sample libraries which produce beautiful and useful html tables.</p>
-<p><br /> ## Example 1: Beautiful table with the fortmattable package</p>
+<p>We are now going to call on a few sample libraries which produce beautiful and useful html tables. <br /></p>
+<div id="example-1-beautiful-table-with-the-fortmattable-package" class="section level2">
+<h2>Example 1: Beautiful table with the fortmattable package</h2>
 <p>This example comes from my blog on <a href="https://www.littlemissdata.com/blog/prettytables">how to use the formattable package.</a></p>
 <pre class="r"><code>#Create a formatter to display the red/green and arrow up/down indicators.
 improvement_formatter &lt;- formatter(&quot;span&quot;, 
@@ -3191,12 +3192,13 @@ Improvement
 </tbody>
 </table>
 <p><br /></p>
+</div>
 <div id="example-2-pretty-interactive-table-with-the-dt-package" class="section level2">
 <h2>Example 2: Pretty, interactive table with the DT package</h2>
 <p>Display a beautiful and interactive with the DT package. I love this package for very large tables, that a user may want to interact with explore in a UI for a while before analyzing. I used this package for my very large tables in my <a href="https://lgellis.github.io/pelotonR/">pelotonR package</a></p>
 <pre class="r"><code>datatable(i1, extensions = &quot;Scroller&quot;, width = 1000, options = list(scrollY = 200, scroller = TRUE, scrollX = 200, pageLength = 1))</code></pre>
-<p><div id="htmlwidget-003bde06d485330233b3" style="width:1000px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-003bde06d485330233b3">{"x":{"filter":"none","extensions":["Scroller"],"data":[["1","2","3","4"],["Prevalence of Obesity","Prevalence of Tobacco Use","Prevalence of Cardiovascular Disease","Prevalence of Diabetes"],[19.1,17.4,5,8],[23.6,15,4.9,7.2],[23.3,15.3,1.5,9.3],[20.5,12.2,4.4,7.2],[24,16.6,4.9,7.5],[23.2,16.7,6.2,10.4],[22.28,15.53,4.48,8.27],[-21.47,4.02,-24,-30]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Indicator Name<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>Average<\/th>\n      <th>Improvement<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollY":200,"scroller":true,"scrollX":200,"pageLength":1,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script> <br /></p>
+<p><div id="htmlwidget-e7c7dacc9aaacbe887b7" style="width:1000px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e7c7dacc9aaacbe887b7">{"x":{"filter":"none","extensions":["Scroller"],"data":[["1","2","3","4"],["Prevalence of Obesity","Prevalence of Tobacco Use","Prevalence of Cardiovascular Disease","Prevalence of Diabetes"],[19.1,17.4,5,8],[23.6,15,4.9,7.2],[23.3,15.3,1.5,9.3],[20.5,12.2,4.4,7.2],[24,16.6,4.9,7.5],[23.2,16.7,6.2,10.4],[22.28,15.53,4.48,8.27],[-21.47,4.02,-24,-30]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Indicator Name<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>Average<\/th>\n      <th>Improvement<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollY":200,"scroller":true,"scrollX":200,"pageLength":1,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[1,10,25,50,100]}},"evals":[],"jsHooks":[]}</script> <br /></p>
 </div>
 <div id="more-pretty-r-table-examples" class="section level2">
 <h2>More pretty R table examples</h2>
@@ -3210,8 +3212,7 @@ Improvement
 <h2>Get the HMTL file prepared</h2>
 <ul>
 <li>Ensure that your file is called <code>index.Rmd</code></li>
-<li>Select “Knit” in the top menu bar within R Studio. This will create your file <code>index.htm.</code></li>
-<li>Rename the HTML file to index.html</li>
+<li>Select “Knit” in the top menu bar within R Studio. This will create your file <code>index.html</code> file</li>
 </ul>
 </div>
 <div id="get-your-github-repo-prepared" class="section level2">
@@ -3221,7 +3222,7 @@ Improvement
 <li>Go to the <code>Code</code> area &gt; click <code>Add file</code>.</li>
 <li>Add <code>index.html</code> and <code>index.Rmd</code> file from the above step</li>
 <li>Navigate to the repo &gt; <code>Settings</code> &gt; Scroll to <code>GitHub Pages</code></li>
-<li>Select a branch. If you are unsure, just select <code>Main</code> abd <code>Save</code>.</li>
+<li>Select a branch. If you are unsure, just select <code>Main</code> and <code>Save</code>.</li>
 <li>Select a theme, I selected <code>Minimal</code>. If you need to save the new README.md file for this, do please do so.<br />
 </li>
 <li>Navigate back to <code>Settings</code> &gt; Scroll to <code>GitHub Pages</code>. Your URL should now be displaying. It will display text similar to: <code>Your site is published at {URL}</code></li>
